@@ -24,7 +24,8 @@ namespace Finance_Tracker
 
         private void categoriesDidPress(object sender, EventArgs e)
         {
-
+            Category.CategoriesView categoriesView = new Category.CategoriesView();
+            categoriesView.ShowDialog();
         }
 
         private void contactsDidPress(object sender, EventArgs e)

@@ -1,10 +1,11 @@
 C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\bin\Debug\Finance Tracker.exe.config
 C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\bin\Debug\Finance Tracker.exe
 C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\bin\Debug\Finance Tracker.pdb
-C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Debug\Finance Tracker.csprojAssemblyReference.cache
 C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Debug\Finance_Tracker.homeView.resources
 C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Debug\Finance_Tracker.Properties.Resources.resources
 C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Debug\Finance Tracker.csproj.GenerateResource.cache
 C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Debug\Finance Tracker.csproj.CoreCompileInputs.cache
 C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Debug\Finance Tracker.exe
 C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Debug\Finance Tracker.pdb
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Debug\Finance_Tracker.Category.CategoriesView.resources
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Debug\Finance Tracker.csprojAssemblyReference.cache
