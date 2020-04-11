@@ -9,3 +9,4 @@ C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance
 C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Debug\Finance Tracker.pdb
 C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Debug\Finance_Tracker.Category.CategoriesView.resources
 C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Debug\Finance Tracker.csprojAssemblyReference.cache
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Debug\Finance_Tracker.Category.AddNewCategoryView.resources

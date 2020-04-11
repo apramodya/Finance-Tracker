@@ -64,5 +64,11 @@ namespace Finance_Tracker.Category
                 MessageBox.Show(item.Tag.ToString() + " " + item.Text);
             }
         }
+
+        private void addNewCategory(object sender, EventArgs e)
+        {
+            Category.AddNewCategoryView addNewCategoryView = new AddNewCategoryView();
+            addNewCategoryView.ShowDialog();
+        }
     }
 }

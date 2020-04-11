@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category\AddNewCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Category\AddNewCategory.Designer.cs">
+      <DependentUpon>AddNewCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Category\CategoriesView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Category\AddNewCategory.resx">
+      <DependentUpon>AddNewCategory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Category\CategoriesView.resx">
       <DependentUpon>CategoriesView.cs</DependentUpon>
     </EmbeddedResource>
