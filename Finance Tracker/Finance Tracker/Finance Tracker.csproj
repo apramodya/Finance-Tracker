@@ -49,6 +49,7 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Models\TransactionType.cs" />
     <Compile Include="Views\Category\AddNewCategory.cs">
       <SubType>Form</SubType>
     </Compile>

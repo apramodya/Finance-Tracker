@@ -79,9 +79,6 @@
             this.categoryTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.categoryTypeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoryTypeComboBox.FormattingEnabled = true;
-            this.categoryTypeComboBox.Items.AddRange(new object[] {
-            "Income",
-            "Expense"});
             this.categoryTypeComboBox.Location = new System.Drawing.Point(484, 230);
             this.categoryTypeComboBox.Name = "categoryTypeComboBox";
             this.categoryTypeComboBox.Size = new System.Drawing.Size(270, 39);
@@ -102,6 +99,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add New Category";
+            this.Load += new System.EventHandler(this.AddNewCategoryView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

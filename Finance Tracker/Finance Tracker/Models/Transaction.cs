@@ -10,7 +10,7 @@ namespace Finance_Tracker.Models
     {
         public int Id { get; set; }
         public DateTime DateTime { get; set; }
-        public String TransactionType { get; set; }
+        public TransactionType TransactionType { get; set; }
         public Double Amount { get; set; }
         public Contact Contact { get; set; }
     }

@@ -16,7 +16,11 @@ namespace Finance_Tracker.Category
         {
             InitializeComponent();
         }
-
+        private void AddNewCategoryView_Load(object sender, EventArgs e)
+        {
+            categoryTypeComboBox.Items.Add(Models.TransactionType.Expense);
+            categoryTypeComboBox.Items.Add(Models.TransactionType.Income);
+        }
         private void saveCategory(object sender, EventArgs e)
         {
             if (categoryNameTextBox.Text.Length == 0)

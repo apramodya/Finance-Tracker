@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Finance_Tracker.Models
 {
-    class Category
+    enum TransactionType
     {
-        public int Id { get; set; }
-        public String Name { get; set; }
-        public TransactionType Type { get; set; }
+        Income,
+        Expense
     }
 }
