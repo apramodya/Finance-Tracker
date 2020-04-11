@@ -46,16 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Category\AddNewCategory.cs">
+    <Compile Include="Views\Category\AddNewCategory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Category\AddNewCategory.Designer.cs">
+    <Compile Include="Views\Category\AddNewCategory.Designer.cs">
       <DependentUpon>AddNewCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Category\CategoriesView.cs">
+    <Compile Include="Views\Category\CategoriesView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Category\CategoriesView.Designer.cs">
+    <Compile Include="Views\Category\CategoriesView.Designer.cs">
       <DependentUpon>CategoriesView.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
@@ -66,10 +66,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Category\AddNewCategory.resx">
+    <EmbeddedResource Include="Views\Category\AddNewCategory.resx">
       <DependentUpon>AddNewCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Category\CategoriesView.resx">
+    <EmbeddedResource Include="Views\Category\CategoriesView.resx">
       <DependentUpon>CategoriesView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
@@ -98,10 +98,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Contact\" />
-    <Folder Include="Prediction\" />
-    <Folder Include="Report\" />
-    <Folder Include="Transaction\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Models\" />
+    <Folder Include="Views\Contact\" />
+    <Folder Include="Views\Prediction\" />
+    <Folder Include="Views\Report\" />
+    <Folder Include="Views\Transaction\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
