@@ -28,20 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.contactsList = new System.Windows.Forms.ListView();
+            this.contactsListView = new System.Windows.Forms.ListView();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // contactsList
+            // contactsListView
             // 
-            this.contactsList.HideSelection = false;
-            this.contactsList.Location = new System.Drawing.Point(142, 53);
-            this.contactsList.MaximumSize = new System.Drawing.Size(260, 469);
-            this.contactsList.Name = "contactsList";
-            this.contactsList.Size = new System.Drawing.Size(260, 469);
-            this.contactsList.TabIndex = 0;
-            this.contactsList.UseCompatibleStateImageBehavior = false;
-            this.contactsList.View = System.Windows.Forms.View.List;
+            this.contactsListView.HideSelection = false;
+            this.contactsListView.Location = new System.Drawing.Point(142, 53);
+            this.contactsListView.MaximumSize = new System.Drawing.Size(260, 469);
+            this.contactsListView.Name = "contactsListView";
+            this.contactsListView.Size = new System.Drawing.Size(260, 469);
+            this.contactsListView.TabIndex = 0;
+            this.contactsListView.UseCompatibleStateImageBehavior = false;
+            this.contactsListView.View = System.Windows.Forms.View.List;
+            this.contactsListView.DoubleClick += new System.EventHandler(this.contactDoubleClicked);
             // 
             // button1
             // 
@@ -60,19 +61,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(878, 572);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.contactsList);
+            this.Controls.Add(this.contactsListView);
             this.MaximizeBox = false;
             this.Name = "ContactsView";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Contacts";
+            this.Load += new System.EventHandler(this.ContactsView_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListView contactsList;
+        private System.Windows.Forms.ListView contactsListView;
         private System.Windows.Forms.Button button1;
     }
 }

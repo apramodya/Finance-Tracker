@@ -16,5 +16,32 @@ namespace Finance_Tracker.Views.Contact
         {
             InitializeComponent();
         }
+
+        private void saveContact(object sender, EventArgs e)
+        {
+            if (firstNameTextBox.Text.Length == 0 )
+            {
+                MessageBox.Show(
+                    "Please add first name",
+                    "Missing field",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            } else if (lastNameTextBox.Text.Length == 0)
+            {
+                MessageBox.Show(
+                    "Please add last name",
+                    "Missing field",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+
+            var firstName = firstNameTextBox.Text;
+            var lastName = lastNameTextBox.Text;
+            var description = descriptionTextBox.Text;
+
+            MessageBox.Show(firstName);
+        }
     }
 }

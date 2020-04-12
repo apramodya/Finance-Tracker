@@ -18,5 +18,11 @@ namespace Finance_Tracker.Models
                 return this.FirstName + " " + this.LastName;
             }
         }
+        public Contact(int Id, String FirstName, String LastName)
+        {
+            this.Id = Id;
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+        }
     }
 }
