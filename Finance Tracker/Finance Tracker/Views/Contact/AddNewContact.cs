@@ -52,6 +52,19 @@ namespace Finance_Tracker.Views.Contact
                 );
             this.dbData.WriteXml(filePath);
 
+            // database
+            using (DataBase.DBContainer db = new DataBase.DBContainer())
+            {
+                DataBase.Contact contact = new DataBase.Contact {
+                    FirstName = firstName,
+                    LastName = lastName,
+                    Description = description,
+                };
+
+                db.Contacts.Add(contact);
+                db.SaveChanges();
+            }
+
             this.Close();
         }
 
