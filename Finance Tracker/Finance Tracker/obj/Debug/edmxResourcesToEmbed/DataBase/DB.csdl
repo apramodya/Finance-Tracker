@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DB" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="DBContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Contacts" EntityType="DB.Contact" />
+    <EntitySet Name="Categories" EntityType="DB.Category" />
+    <EntitySet Name="Transactions" EntityType="DB.Transaction" />
+    <AssociationSet Name="TransactionContact" Association="DB.TransactionContact">
+      <End Role="Transaction" EntitySet="Transactions" />
+      <End Role="Contact" EntitySet="Contacts" />
+    </AssociationSet>
+    <AssociationSet Name="TransactionCategory" Association="DB.TransactionCategory">
+      <End Role="Transaction" EntitySet="Transactions" />
+      <End Role="Category" EntitySet="Categories" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" />
+    <Property Name="LastName" Type="String" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" />
+    <NavigationProperty Name="Transaction" Relationship="DB.TransactionContact" FromRole="Contact" ToRole="Transaction" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="TransactionType" Type="String" Nullable="false" />
+    <NavigationProperty Name="Transaction" Relationship="DB.TransactionCategory" FromRole="Category" ToRole="Transaction" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateTime" Type="String" Nullable="false" />
+    <Property Name="TransactionType" Type="String" Nullable="false" />
+    <Property Name="Amount" Type="String" Nullable="false" />
+    <NavigationProperty Name="Contacts" Relationship="DB.TransactionContact" FromRole="Transaction" ToRole="Contact" />
+    <NavigationProperty Name="Categories" Relationship="DB.TransactionCategory" FromRole="Transaction" ToRole="Category" />
+  </EntityType>
+  <Association Name="TransactionContact">
+    <End Type="DB.Transaction" Role="Transaction" Multiplicity="*" />
+    <End Type="DB.Contact" Role="Contact" Multiplicity="1" />
+  </Association>
+  <Association Name="TransactionCategory">
+    <End Type="DB.Transaction" Role="Transaction" Multiplicity="*" />
+    <End Type="DB.Category" Role="Category" Multiplicity="1" />
+  </Association>
+</Schema>

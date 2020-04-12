@@ -18,7 +18,7 @@ namespace Finance_Tracker.Views.Contact
         }
 
         Models.Contact[] contactsList = {
-            new Models.Contact(1, "Pramodya", "Abe"),
+            new Models.Contact(1, "Pramodya", "Abe", ""),
         };
 
         private void addNewContact(object sender, EventArgs e)
