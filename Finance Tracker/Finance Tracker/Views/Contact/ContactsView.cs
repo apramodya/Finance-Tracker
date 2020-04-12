@@ -22,6 +22,37 @@ namespace Finance_Tracker.Views.Contact
         {
             loadContacts();
         }
+        private void contactClicked(object sender, EventArgs e)
+        {
+            AddNewContactView addNewContactView = new AddNewContactView();
+
+            if (contactsListView.SelectedItems.Count > 0)
+            {
+                ListViewItem item = contactsListView.SelectedItems[0];
+                var id = int.Parse(item.Tag.ToString());
+
+                using (DataBase.DBContainer db = new DataBase.DBContainer())
+                {
+                    var contact = (from Contacts in db.Contacts
+                                where id == Contacts.Id
+                                select Contacts).FirstOrDefault();
+
+                    if (contact != null)
+                    {
+                        Models.Contact _contact = new Models.Contact();
+                        _contact.Id = contact.Id;
+                        _contact.FirstName = contact.FirstName;
+                        _contact.LastName = contact.LastName;
+                        _contact.Description = contact.Description;
+
+                        addNewContactView.Contact = _contact;
+                        addNewContactView.isUpdating = true;
+
+                        addNewContactView.ShowDialog();
+                    }
+                }
+            }
+        }
         private void contactDoubleClicked(object sender, EventArgs e)
         {
             if (contactsListView.SelectedItems.Count > 0)

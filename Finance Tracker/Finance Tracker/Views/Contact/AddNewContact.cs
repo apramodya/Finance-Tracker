@@ -12,12 +12,22 @@ namespace Finance_Tracker.Views.Contact
 {
     public partial class AddNewContactView : Form
     {
+        public Boolean isUpdating = false;
+        internal Models.Contact Contact;
         private DataSets.DSContacts dbData = new DataSets.DSContacts();
         public AddNewContactView()
         {
             InitializeComponent();
         }
-
+        private void AddNewContactView_Load(object sender, EventArgs e)
+        {
+            if (isUpdating)
+            {
+                firstNameTextBox.Text = Contact.FirstName;
+                lastNameTextBox.Text = Contact.LastName;
+                descriptionTextBox.Text = Contact.Description;
+            }
+        }
         private void saveContact(object sender, EventArgs e)
         {
             if (firstNameTextBox.Text.Length == 0 )
@@ -55,24 +65,42 @@ namespace Finance_Tracker.Views.Contact
             this.dbData.WriteXml(filePath);
 
             // database
-            using (DataBase.DBContainer db = new DataBase.DBContainer())
+            if (isUpdating)
             {
-                DataBase.Contact contact = new DataBase.Contact {
-                    FirstName = firstName,
-                    LastName = lastName,
-                    Description = description,
-                };
+                using (DataBase.DBContainer db = new DataBase.DBContainer())
+                {
+                    var contact = (from Contacts in db.Contacts
+                                    where Contact.Id == Contacts.Id
+                                    select Contacts).FirstOrDefault();
 
-                db.Contacts.Add(contact);
-                db.SaveChanges();
+                    if (contact != null )
+                    {
+                        contact.FirstName = firstName;
+                        contact.LastName = lastName;
+                        contact.Description = description;
+                    }
+
+                    db.SaveChanges();
+                }
+
+                this.Close();
+            } else
+            {
+                using (DataBase.DBContainer db = new DataBase.DBContainer())
+                {
+                    DataBase.Contact contact = new DataBase.Contact
+                    {
+                        FirstName = firstName,
+                        LastName = lastName,
+                        Description = description,
+                    };
+
+                    db.Contacts.Add(contact);
+                    db.SaveChanges();
+                }
+
+                this.Close();
             }
-
-            this.Close();
-        }
-
-        private void AddNewContactView_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

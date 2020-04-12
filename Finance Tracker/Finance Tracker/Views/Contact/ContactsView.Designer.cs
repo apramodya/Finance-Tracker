@@ -42,6 +42,7 @@
             this.contactsListView.TabIndex = 0;
             this.contactsListView.UseCompatibleStateImageBehavior = false;
             this.contactsListView.View = System.Windows.Forms.View.List;
+            this.contactsListView.Click += new System.EventHandler(this.contactClicked);
             this.contactsListView.DoubleClick += new System.EventHandler(this.contactDoubleClicked);
             // 
             // button1

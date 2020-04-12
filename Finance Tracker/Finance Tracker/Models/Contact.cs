@@ -26,5 +26,10 @@ namespace Finance_Tracker.Models
             this.LastName = LastName;
             this.Description = Description;
         }
+
+        public Contact()
+        {
+
+        }
     }
 }
