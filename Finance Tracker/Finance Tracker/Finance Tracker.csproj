@@ -46,6 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSets\DSContacts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSContacts.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Transaction.cs" />
@@ -106,6 +111,17 @@
     <EmbeddedResource Include="Views\Contact\ContactsView.resx">
       <DependentUpon>ContactsView.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DataSets\DSContacts.xsc">
+      <DependentUpon>DSContacts.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\DSContacts.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSContacts.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\DSContacts.xss">
+      <DependentUpon>DSContacts.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -120,7 +136,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Views\Prediction\" />
     <Folder Include="Views\Report\" />
     <Folder Include="Views\Transaction\" />

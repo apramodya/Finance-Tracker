@@ -44,6 +44,7 @@ namespace Finance_Tracker.Views.Contact
             if (contactsListView.SelectedItems.Count > 0)
             {
                 ListViewItem item = contactsListView.SelectedItems[0];
+                
                 MessageBox.Show(item.Tag.ToString() + " " + item.Text);
             }
         }
