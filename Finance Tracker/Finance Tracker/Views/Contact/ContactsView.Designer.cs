@@ -67,6 +67,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Contacts";
+            this.Activated += new System.EventHandler(this.ContactsView_Activated);
             this.Load += new System.EventHandler(this.ContactsView_Load);
             this.ResumeLayout(false);
 

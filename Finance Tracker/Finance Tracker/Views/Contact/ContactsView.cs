@@ -17,35 +17,43 @@ namespace Finance_Tracker.Views.Contact
             InitializeComponent();
         }
 
-        Models.Contact[] contactsList = {
-            new Models.Contact(1, "Pramodya", "Abe", ""),
-        };
-
-        private void addNewContact(object sender, EventArgs e)
+        private void ContactsView_Load(object sender, EventArgs e) {}
+        private void ContactsView_Activated(object sender, EventArgs e)
         {
-            AddNewContactView addNewContactView = new AddNewContactView();
-            addNewContactView.ShowDialog();
+            loadContacts();
         }
-
-        private void ContactsView_Load(object sender, EventArgs e)
-        {
-            foreach (Models.Contact contact in contactsList)
-            {
-                ListViewItem newItem = new ListViewItem();
-                newItem.Tag = contact.Id;
-                newItem.Text = contact.FullName;
-
-                contactsListView.Items.Add(newItem);
-            }
-        }
-
         private void contactDoubleClicked(object sender, EventArgs e)
         {
             if (contactsListView.SelectedItems.Count > 0)
             {
                 ListViewItem item = contactsListView.SelectedItems[0];
-                
+
                 MessageBox.Show(item.Tag.ToString() + " " + item.Text);
+            }
+        }
+        private void addNewContact(object sender, EventArgs e)
+        {
+            AddNewContactView addNewContactView = new AddNewContactView();
+            addNewContactView.ShowDialog();
+        }
+        private void loadContacts()
+        {
+            contactsListView.Items.Clear();
+
+            using (DataBase.DBContainer db = new DataBase.DBContainer())
+            {
+                var query = from Contacts in db.Contacts
+                            select Contacts;
+
+                foreach (var contact in query)
+                {
+                    ListViewItem newItem = new ListViewItem();
+
+                    newItem.Tag = contact.Id;
+                    newItem.Text = contact.FirstName + " " + contact.LastName;
+
+                    contactsListView.Items.Add(newItem);
+                }
             }
         }
     }
