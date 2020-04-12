@@ -12,6 +12,7 @@ namespace Finance_Tracker.Views.Contact
 {
     public partial class AddNewContactView : Form
     {
+        private DataSets.DSContacts dbData = new DataSets.DSContacts();
         public AddNewContactView()
         {
             InitializeComponent();
@@ -41,7 +42,22 @@ namespace Finance_Tracker.Views.Contact
             var lastName = lastNameTextBox.Text;
             var description = descriptionTextBox.Text;
 
-            MessageBox.Show(firstName);
+            this.dbData.Contacts.AddContactsRow(firstName, lastName, description);
+            this.dbData.AcceptChanges();
+
+            String filePath = String.Format(
+                "{0}\\{1}",
+                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                "DSContacts.txt"
+                );
+            this.dbData.WriteXml(filePath);
+
+            this.Close();
+        }
+
+        private void AddNewContactView_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

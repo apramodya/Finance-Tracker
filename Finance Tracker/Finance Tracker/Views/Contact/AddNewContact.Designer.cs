@@ -119,6 +119,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add New Contact";
+            this.Load += new System.EventHandler(this.AddNewContactView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

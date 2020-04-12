@@ -11,3 +11,4 @@ C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance
 C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Debug\Finance_Tracker.Category.AddNewCategoryView.resources
 C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Debug\Finance_Tracker.Views.Contact.AddNewContactView.resources
 C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Debug\Finance_Tracker.Views.Contact.ContactsView.resources
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Debug\Finance Tracker.csprojAssemblyReference.cache
