@@ -18,5 +18,10 @@ namespace Finance_Tracker.Models
             this.Name = Name;
             this.Type = Type;
         }
+
+        public Category()
+        {
+
+        }
     }
 }

@@ -12,6 +12,9 @@ namespace Finance_Tracker.Category
 {
     public partial class AddNewCategoryView : Form
     {
+        public Boolean isUpdating = false;
+        internal Models.Category Category;
+        private DataSets.DSContacts dbData = new DataSets.DSContacts();
         public AddNewCategoryView()
         {
             InitializeComponent();
@@ -20,7 +23,57 @@ namespace Finance_Tracker.Category
         {
             categoryTypeComboBox.Items.Add(Models.TransactionType.Expense);
             categoryTypeComboBox.Items.Add(Models.TransactionType.Income);
+
+            if (isUpdating)
+            {
+                categoryNameTextBox.Text = Category.Name;
+                categoryTypeComboBox.SelectedItem = Category.Type;
+
+                // save button
+                saveButton.Location = new Point(
+                    categoryTypeComboBox.Location.X - 160,
+                    categoryTypeComboBox.Location.Y + 60);
+                // delete button
+                Button deleteButton = new Button();
+                deleteButton.Size = saveButton.Size;
+                deleteButton.Font = saveButton.Font;
+                deleteButton.Text = "Delete";
+                deleteButton.Location = new Point(
+                    categoryTypeComboBox.Location.X - 10,
+                    categoryTypeComboBox.Location.Y + 60);
+                this.Controls.Add(deleteButton);
+
+                deleteButton.Click += DeleteButton_Click;
+            }
         }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show(
+                    "Are you sure you want to delete?",
+                    "Delete",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                using (DataBase.DBContainer db = new DataBase.DBContainer())
+                {
+                    var category = (from Categories in db.Categories
+                                    where Category.Id == Categories.Id
+                                    select Categories).FirstOrDefault();
+
+                    if (category != null)
+                    {
+                        db.Categories.Remove(category);
+                        db.SaveChanges();
+                    }
+                }
+
+                this.Close();
+            }
+        }
+
         private void saveCategory(object sender, EventArgs e)
         {
             if (categoryNameTextBox.Text.Length == 0)
@@ -44,7 +97,53 @@ namespace Finance_Tracker.Category
             var categoryName = categoryNameTextBox.Text;
             var categoryType = categoryTypeComboBox.SelectedItem.ToString();
 
-            MessageBox.Show(categoryName + " " + categoryType);
+            // data set
+            this.dbData.Category.AddCategoryRow(categoryName, categoryType);
+            this.dbData.AcceptChanges();
+
+            // xml
+            String filePath = String.Format(
+                "{0}\\{1}",
+                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                "DSCategories.txt"
+                );
+            this.dbData.WriteXml(filePath);
+
+            // database
+            if (isUpdating)
+            {
+                using (DataBase.DBContainer db = new DataBase.DBContainer())
+                {
+                    var category = (from Categories in db.Categories
+                                   where Categories.Id == Category.Id
+                                   select Categories).FirstOrDefault();
+
+                    if (category != null)
+                    {
+                        category.Name = categoryName;
+                        category.TransactionType = categoryType;
+                    }
+
+                    db.SaveChanges();
+                }
+
+                this.Close();
+            } else
+            {
+                using (DataBase.DBContainer db = new DataBase.DBContainer())
+                {
+                    DataBase.Category category = new DataBase.Category
+                    {
+                        Name = categoryName,
+                        TransactionType = categoryType,
+                    };
+
+                    db.Categories.Add(category);
+                    db.SaveChanges();
+                }
+
+                this.Close();
+            }
         }
     }
 }

@@ -47,7 +47,7 @@
             this.expenseCategoriesList.Tag = "0";
             this.expenseCategoriesList.UseCompatibleStateImageBehavior = false;
             this.expenseCategoriesList.View = System.Windows.Forms.View.List;
-            this.expenseCategoriesList.DoubleClick += new System.EventHandler(this.expenseCategorySelected);
+            this.expenseCategoriesList.Click += new System.EventHandler(this.expenseCategorySelected);
             // 
             // incomeCategoriesList
             // 
@@ -61,7 +61,7 @@
             this.incomeCategoriesList.Tag = "1";
             this.incomeCategoriesList.UseCompatibleStateImageBehavior = false;
             this.incomeCategoriesList.View = System.Windows.Forms.View.List;
-            this.incomeCategoriesList.DoubleClick += new System.EventHandler(this.incomeCategorySelected);
+            this.incomeCategoriesList.Click += new System.EventHandler(this.incomeCategorySelected);
             // 
             // button1
             // 
@@ -109,6 +109,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Categories";
+            this.Activated += new System.EventHandler(this.CategoriesView_Activated);
             this.Load += new System.EventHandler(this.CategoriesView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

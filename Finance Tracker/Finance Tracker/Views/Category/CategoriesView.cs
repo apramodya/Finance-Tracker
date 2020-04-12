@@ -16,55 +16,71 @@ namespace Finance_Tracker.Category
         {
             InitializeComponent();
         }
-
-        Models.Category[] incomeCategories = {
-            new Models.Category(1, "Savings", Models.TransactionType.Income),
-            new Models.Category(2, "Salary", Models.TransactionType.Income),
-            new Models.Category(3, "Loan", Models.TransactionType.Income),
-        };
-        Models.Category[] expenseCategories = {
-            new Models.Category(1, "Travel", Models.TransactionType.Expense),
-            new Models.Category(2, "Food", Models.TransactionType.Expense),
-            new Models.Category(3, "Medicine", Models.TransactionType.Expense),
-        };
-
-        private void CategoriesView_Load(object sender, EventArgs e)
+        private void CategoriesView_Activated(object sender, EventArgs e)
         {
-
-            foreach (Models.Category cateogry in incomeCategories)
-            {
-                ListViewItem newItem = new ListViewItem();
-                newItem.Tag = cateogry.Id;
-                newItem.Text = cateogry.Name;
-
-                incomeCategoriesList.Items.Add(newItem);
-            }
-
-            foreach (Models.Category cateogry in expenseCategories)
-            {
-                ListViewItem newItem = new ListViewItem();
-                newItem.Tag = cateogry.Id;
-                newItem.Text = cateogry.Name;
-
-                expenseCategoriesList.Items.Add(newItem);
-            }
+            loadCategories();
         }
+        private void CategoriesView_Load(object sender, EventArgs e) {}
 
         private void expenseCategorySelected(object sender, EventArgs e)
         {
+            AddNewCategoryView addNewCategoryView = new AddNewCategoryView();
+
             if (expenseCategoriesList.SelectedItems.Count > 0)
             {
                 ListViewItem item = expenseCategoriesList.SelectedItems[0];
-                MessageBox.Show(item.Tag.ToString() + " " + item.Text);
+                var id = int.Parse(item.Tag.ToString());
+
+                using (DataBase.DBContainer db = new DataBase.DBContainer())
+                {
+                    var Category = (from Categories in db.Categories
+                                   where id == Categories.Id
+                                   select Categories).FirstOrDefault();
+
+                    if (Category != null)
+                    {
+                        Models.Category _category = new Models.Category();
+                        _category.Id = Category.Id;
+                        _category.Name = Category.Name;
+                        _category.Type = Models.TransactionType.Expense;
+
+                        addNewCategoryView.Category = _category;
+                        addNewCategoryView.isUpdating = true;
+
+                        addNewCategoryView.ShowDialog();
+                    }
+                }
             }
         }
 
         private void incomeCategorySelected(object sender, EventArgs e)
         {
+            AddNewCategoryView addNewCategoryView = new AddNewCategoryView();
+
             if (incomeCategoriesList.SelectedItems.Count > 0)
             {
                 ListViewItem item = incomeCategoriesList.SelectedItems[0];
-                MessageBox.Show(item.Tag.ToString() + " " + item.Text);
+                var id = int.Parse(item.Tag.ToString());
+
+                using (DataBase.DBContainer db = new DataBase.DBContainer())
+                {
+                    var Category = (from Categories in db.Categories
+                                    where id == Categories.Id
+                                    select Categories).FirstOrDefault();
+
+                    if (Category != null)
+                    {
+                        Models.Category _category = new Models.Category();
+                        _category.Id = Category.Id;
+                        _category.Name = Category.Name;
+                        _category.Type = Models.TransactionType.Income;
+
+                        addNewCategoryView.Category = _category;
+                        addNewCategoryView.isUpdating = true;
+
+                        addNewCategoryView.ShowDialog();
+                    }
+                }
             }
         }
 
@@ -72,6 +88,34 @@ namespace Finance_Tracker.Category
         {
             Category.AddNewCategoryView addNewCategoryView = new AddNewCategoryView();
             addNewCategoryView.ShowDialog();
+        }
+
+        private void loadCategories()
+        {
+            incomeCategoriesList.Items.Clear();
+            expenseCategoriesList.Items.Clear();
+
+            using (DataBase.DBContainer db = new DataBase.DBContainer())
+            {
+                var query = from Categories in db.Categories
+                            select Categories;
+
+                foreach (var category in query)
+                {
+                    ListViewItem newItem = new ListViewItem();
+
+                    newItem.Tag = category.Id;
+                    newItem.Text = category.Name;
+
+                    if (category.TransactionType == "Expense")
+                    {
+                        expenseCategoriesList.Items.Add(newItem);
+                    } else
+                    {
+                        incomeCategoriesList.Items.Add(newItem);
+                    }
+                }
+            }
         }
     }
 }

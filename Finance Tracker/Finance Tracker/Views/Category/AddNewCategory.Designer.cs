@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
             this.categoryNameTextBox = new System.Windows.Forms.TextBox();
             this.categoryTypeComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
@@ -55,16 +55,16 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Category type";
             // 
-            // button1
+            // saveButton
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(307, 390);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(265, 58);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.saveCategory);
+            this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveButton.Location = new System.Drawing.Point(307, 390);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(265, 58);
+            this.saveButton.TabIndex = 2;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveCategory);
             // 
             // categoryNameTextBox
             // 
@@ -91,7 +91,7 @@
             this.ClientSize = new System.Drawing.Size(905, 515);
             this.Controls.Add(this.categoryTypeComboBox);
             this.Controls.Add(this.categoryNameTextBox);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
@@ -109,7 +109,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.TextBox categoryNameTextBox;
         private System.Windows.Forms.ComboBox categoryTypeComboBox;
     }
