@@ -17,33 +17,36 @@ namespace Finance_Tracker.Category
             InitializeComponent();
         }
 
-        string[] incomeCategories = { "Salary", "Savings" };
-        string[] expenseCategories = { "Food", "Travel", "Medicine" };
+        Models.Category[] incomeCategories = {
+            new Models.Category(1, "Savings", Models.TransactionType.Income),
+            new Models.Category(2, "Salary", Models.TransactionType.Income),
+            new Models.Category(3, "Loan", Models.TransactionType.Income),
+        };
+        Models.Category[] expenseCategories = {
+            new Models.Category(1, "Travel", Models.TransactionType.Expense),
+            new Models.Category(2, "Food", Models.TransactionType.Expense),
+            new Models.Category(3, "Medicine", Models.TransactionType.Expense),
+        };
 
         private void CategoriesView_Load(object sender, EventArgs e)
         {
-            var i = 0;
-            foreach (string cateogry in incomeCategories)
+
+            foreach (Models.Category cateogry in incomeCategories)
             {
                 ListViewItem newItem = new ListViewItem();
-                newItem.Tag = i;
-                newItem.Text = cateogry;
+                newItem.Tag = cateogry.Id;
+                newItem.Text = cateogry.Name;
 
                 incomeCategoriesList.Items.Add(newItem);
-
-                i++;
             }
 
-            var j = 0;
-            foreach (string cateogry in expenseCategories)
+            foreach (Models.Category cateogry in expenseCategories)
             {
                 ListViewItem newItem = new ListViewItem();
-                newItem.Tag = i;
-                newItem.Text = cateogry;
+                newItem.Tag = cateogry.Id;
+                newItem.Text = cateogry.Name;
 
                 expenseCategoriesList.Items.Add(newItem);
-
-                i++;
             }
         }
 

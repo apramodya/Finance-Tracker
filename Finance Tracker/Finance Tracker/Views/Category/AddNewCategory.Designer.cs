@@ -88,7 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(905, 594);
+            this.ClientSize = new System.Drawing.Size(905, 515);
             this.Controls.Add(this.categoryTypeComboBox);
             this.Controls.Add(this.categoryNameTextBox);
             this.Controls.Add(this.button1);

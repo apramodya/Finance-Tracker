@@ -30,7 +30,8 @@ namespace Finance_Tracker
 
         private void contactsDidPress(object sender, EventArgs e)
         {
-
+            Views.Contact.ContactsView contactsView = new Views.Contact.ContactsView();
+            contactsView.ShowDialog();
         }
 
         private void transactionsDidPress(object sender, EventArgs e)
