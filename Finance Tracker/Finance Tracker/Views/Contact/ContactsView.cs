@@ -53,15 +53,8 @@ namespace Finance_Tracker.Views.Contact
                 }
             }
         }
-        private void contactDoubleClicked(object sender, EventArgs e)
-        {
-            if (contactsListView.SelectedItems.Count > 0)
-            {
-                ListViewItem item = contactsListView.SelectedItems[0];
-
-                MessageBox.Show(item.Tag.ToString() + " " + item.Text);
-            }
-        }
+        private void contactDoubleClicked(object sender, EventArgs e) { }
+       
         private void addNewContact(object sender, EventArgs e)
         {
             AddNewContactView addNewContactView = new AddNewContactView();

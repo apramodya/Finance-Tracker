@@ -26,8 +26,52 @@ namespace Finance_Tracker.Views.Contact
                 firstNameTextBox.Text = Contact.FirstName;
                 lastNameTextBox.Text = Contact.LastName;
                 descriptionTextBox.Text = Contact.Description;
+
+                // save button
+                saveButton.Location = new Point(
+                    descriptionTextBox.Location.X - 100, 
+                    descriptionTextBox.Location.Y + 60);
+                // delete button
+                Button deleteButton = new Button();
+                deleteButton.Size = saveButton.Size;
+                deleteButton.Font = saveButton.Font;
+                deleteButton.Text = "Delete";
+                deleteButton.Location = new Point(
+                    descriptionTextBox.Location.X + 50,
+                    descriptionTextBox.Location.Y + 60);
+                this.Controls.Add(deleteButton);
+
+                deleteButton.Click += DeleteButton_Click;
             }
         }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show(
+                    "Are you sure you want to delete?",
+                    "Delete",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                using (DataBase.DBContainer db = new DataBase.DBContainer())
+                {
+                    var contact = (from Contacts in db.Contacts
+                                   where Contact.Id == Contacts.Id
+                                   select Contacts).FirstOrDefault();
+
+                    if (contact != null)
+                    {
+                        db.Contacts.Remove(contact);
+                        db.SaveChanges();
+                    }
+                }
+
+                this.Close();
+            }
+        }
+
         private void saveContact(object sender, EventArgs e)
         {
             if (firstNameTextBox.Text.Length == 0 )
