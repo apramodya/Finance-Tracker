@@ -93,40 +93,45 @@
             // 
             // amountTextBox
             // 
+            this.amountTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.amountTextBox.Location = new System.Drawing.Point(501, 92);
             this.amountTextBox.Name = "amountTextBox";
-            this.amountTextBox.Size = new System.Drawing.Size(389, 31);
+            this.amountTextBox.Size = new System.Drawing.Size(389, 40);
             this.amountTextBox.TabIndex = 5;
             // 
             // datePicker
             // 
+            this.datePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.datePicker.Location = new System.Drawing.Point(501, 361);
             this.datePicker.Name = "datePicker";
-            this.datePicker.Size = new System.Drawing.Size(389, 31);
+            this.datePicker.Size = new System.Drawing.Size(389, 40);
             this.datePicker.TabIndex = 6;
             // 
             // transactionTypeComboBox
             // 
+            this.transactionTypeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.transactionTypeComboBox.FormattingEnabled = true;
             this.transactionTypeComboBox.Location = new System.Drawing.Point(501, 179);
             this.transactionTypeComboBox.Name = "transactionTypeComboBox";
-            this.transactionTypeComboBox.Size = new System.Drawing.Size(389, 33);
+            this.transactionTypeComboBox.Size = new System.Drawing.Size(389, 41);
             this.transactionTypeComboBox.TabIndex = 7;
             // 
             // categoriesComboBox
             // 
+            this.categoriesComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoriesComboBox.FormattingEnabled = true;
             this.categoriesComboBox.Location = new System.Drawing.Point(501, 271);
             this.categoriesComboBox.Name = "categoriesComboBox";
-            this.categoriesComboBox.Size = new System.Drawing.Size(389, 33);
+            this.categoriesComboBox.Size = new System.Drawing.Size(389, 41);
             this.categoriesComboBox.TabIndex = 8;
             // 
             // contactsComboBox
             // 
+            this.contactsComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contactsComboBox.FormattingEnabled = true;
             this.contactsComboBox.Location = new System.Drawing.Point(501, 455);
             this.contactsComboBox.Name = "contactsComboBox";
-            this.contactsComboBox.Size = new System.Drawing.Size(389, 33);
+            this.contactsComboBox.Size = new System.Drawing.Size(389, 41);
             this.contactsComboBox.TabIndex = 9;
             // 
             // saveButton
