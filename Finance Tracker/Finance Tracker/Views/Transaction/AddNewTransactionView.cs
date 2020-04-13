@@ -11,13 +11,11 @@ using System.Collections;
 
 namespace Finance_Tracker.Views.Transaction
 {
-    public class ComboItem
-    {
-        public String Text { get; set; }
-        public int Value { get; set; }
-    }
+   
     public partial class AddNewTransactionView : Form
     {
+        public Boolean isUpdating = false;
+        Models.TransactionType selectedTransactionType = Models.TransactionType.Expense;
         public AddNewTransactionView()
         {
             InitializeComponent();
@@ -34,14 +32,35 @@ namespace Finance_Tracker.Views.Transaction
         private void saveTransaction(object sender, EventArgs e)
         {
             var amount = amountTextBox.Text;
-            var category = categoriesComboBox.SelectedItem;
-            var contact = contactsComboBox.SelectedValue;
+            var category = categoriesComboBox.SelectedValue.ToString();
+            var contact = contactsComboBox.SelectedValue.ToString();
             var date = datePicker.Value;
+
+            if (amount == "" || amount == null)
+            {
+                MessageBox.Show(
+                    "Please add an amount",
+                    "Missing field",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            } else if (category == null || category == "0")
+            {
+                MessageBox.Show(
+                    "Please select a category",
+                    "Missing field",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+
+
         }
         private void LoadTransactionTypes()
         {
             transactionTypeComboBox.Items.Add(Models.TransactionType.Expense);
             transactionTypeComboBox.Items.Add(Models.TransactionType.Income);
+            transactionTypeComboBox.SelectedItem = transactionTypeComboBox.Items[0];
         }
         private void LoadContacts()
         {
@@ -68,10 +87,12 @@ namespace Finance_Tracker.Views.Transaction
         {
             using (DataBase.DBContainer db = new DataBase.DBContainer())
             {
+                categoriesComboBox.DataSource = null;
                 ArrayList ComboItems = new ArrayList();
                 ComboItems.Add(new ComboItem { Text = null, Value = 0 });
 
                 var categories = from Categories in db.Categories
+                                 where Categories.TransactionType == selectedTransactionType.ToString()
                                select Categories;
 
                 foreach (var category in categories)
@@ -84,5 +105,25 @@ namespace Finance_Tracker.Views.Transaction
                 categoriesComboBox.ValueMember = "Value";
             }
         }
+
+        private void transactionTypeChanged(object sender, EventArgs e)
+        {
+            var selection = transactionTypeComboBox.SelectedItem;
+
+            if (selection.ToString() == "Expense")
+            {
+                selectedTransactionType = Models.TransactionType.Expense;
+                LoadCategories();
+            } else
+            {
+                selectedTransactionType = Models.TransactionType.Income;
+                LoadCategories();
+            }
+        }
+    }
+    public class ComboItem
+    {
+        public String Text { get; set; }
+        public int Value { get; set; }
     }
 }

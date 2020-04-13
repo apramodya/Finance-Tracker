@@ -115,6 +115,7 @@
             this.transactionTypeComboBox.Name = "transactionTypeComboBox";
             this.transactionTypeComboBox.Size = new System.Drawing.Size(389, 41);
             this.transactionTypeComboBox.TabIndex = 7;
+            this.transactionTypeComboBox.SelectedValueChanged += new System.EventHandler(this.transactionTypeChanged);
             // 
             // categoriesComboBox
             // 
