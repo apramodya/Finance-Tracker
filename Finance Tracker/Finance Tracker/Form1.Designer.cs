@@ -37,9 +37,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.income = new System.Windows.Forms.TextBox();
-            this.expense = new System.Windows.Forms.TextBox();
-            this.balance = new System.Windows.Forms.TextBox();
+            this.incomeTextBox = new System.Windows.Forms.TextBox();
+            this.expenseTextBox = new System.Windows.Forms.TextBox();
+            this.balanceTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // categoriesBtn
@@ -145,47 +145,47 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Balance";
             // 
-            // income
+            // incomeTextBox
             // 
-            this.income.Enabled = false;
-            this.income.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.income.Location = new System.Drawing.Point(339, 242);
-            this.income.Name = "income";
-            this.income.Size = new System.Drawing.Size(234, 56);
-            this.income.TabIndex = 9;
-            this.income.Text = "0.00";
-            this.income.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.incomeTextBox.Enabled = false;
+            this.incomeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.incomeTextBox.Location = new System.Drawing.Point(339, 242);
+            this.incomeTextBox.Name = "incomeTextBox";
+            this.incomeTextBox.Size = new System.Drawing.Size(234, 56);
+            this.incomeTextBox.TabIndex = 9;
+            this.incomeTextBox.Text = "0.00";
+            this.incomeTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // expense
+            // expenseTextBox
             // 
-            this.expense.Enabled = false;
-            this.expense.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.expense.Location = new System.Drawing.Point(339, 317);
-            this.expense.Name = "expense";
-            this.expense.Size = new System.Drawing.Size(234, 56);
-            this.expense.TabIndex = 10;
-            this.expense.Text = "0.00";
-            this.expense.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.expenseTextBox.Enabled = false;
+            this.expenseTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.expenseTextBox.Location = new System.Drawing.Point(339, 317);
+            this.expenseTextBox.Name = "expenseTextBox";
+            this.expenseTextBox.Size = new System.Drawing.Size(234, 56);
+            this.expenseTextBox.TabIndex = 10;
+            this.expenseTextBox.Text = "0.00";
+            this.expenseTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // balance
+            // balanceTextBox
             // 
-            this.balance.Enabled = false;
-            this.balance.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.balance.Location = new System.Drawing.Point(339, 403);
-            this.balance.Name = "balance";
-            this.balance.Size = new System.Drawing.Size(234, 56);
-            this.balance.TabIndex = 11;
-            this.balance.Text = "0.00";
-            this.balance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.balanceTextBox.Enabled = false;
+            this.balanceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.balanceTextBox.Location = new System.Drawing.Point(339, 403);
+            this.balanceTextBox.Name = "balanceTextBox";
+            this.balanceTextBox.Size = new System.Drawing.Size(234, 56);
+            this.balanceTextBox.TabIndex = 11;
+            this.balanceTextBox.Text = "0.00";
+            this.balanceTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // homeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1144, 712);
-            this.Controls.Add(this.balance);
-            this.Controls.Add(this.expense);
-            this.Controls.Add(this.income);
+            this.Controls.Add(this.balanceTextBox);
+            this.Controls.Add(this.expenseTextBox);
+            this.Controls.Add(this.incomeTextBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -200,6 +200,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Finance Tracker";
+            this.Activated += new System.EventHandler(this.homeView_Activated);
             this.Load += new System.EventHandler(this.homeView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -217,9 +218,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox income;
-        private System.Windows.Forms.TextBox expense;
-        private System.Windows.Forms.TextBox balance;
+        private System.Windows.Forms.TextBox incomeTextBox;
+        private System.Windows.Forms.TextBox expenseTextBox;
+        private System.Windows.Forms.TextBox balanceTextBox;
     }
 }
 

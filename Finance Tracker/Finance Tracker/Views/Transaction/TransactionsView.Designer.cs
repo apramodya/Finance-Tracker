@@ -67,7 +67,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1039, 794);
+            this.ClientSize = new System.Drawing.Size(1039, 834);
             this.Controls.Add(this.monthCalendar);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.button1);
