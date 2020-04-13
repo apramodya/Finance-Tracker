@@ -36,7 +36,8 @@ namespace Finance_Tracker
 
         private void transactionsDidPress(object sender, EventArgs e)
         {
-
+            Views.Transaction.TransactionsView transactionsView = new Views.Transaction.TransactionsView();
+            transactionsView.ShowDialog();
         }
 
         private void predictionsDidPress(object sender, EventArgs e)

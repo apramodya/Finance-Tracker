@@ -120,6 +120,18 @@
     <Compile Include="Views\Contact\ContactsView.Designer.cs">
       <DependentUpon>ContactsView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Transaction\AddNewTransactionView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Transaction\AddNewTransactionView.Designer.cs">
+      <DependentUpon>AddNewTransactionView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Transaction\TransactionsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Transaction\TransactionsView.Designer.cs">
+      <DependentUpon>TransactionsView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Views\Category\AddNewCategory.resx">
       <DependentUpon>AddNewCategory.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,6 +155,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Contact\ContactsView.resx">
       <DependentUpon>ContactsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Transaction\AddNewTransactionView.resx">
+      <DependentUpon>AddNewTransactionView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Transaction\TransactionsView.resx">
+      <DependentUpon>TransactionsView.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="DataBase\DB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -179,7 +197,6 @@
   <ItemGroup>
     <Folder Include="Views\Prediction\" />
     <Folder Include="Views\Report\" />
-    <Folder Include="Views\Transaction\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataBase\DB.Context.tt">

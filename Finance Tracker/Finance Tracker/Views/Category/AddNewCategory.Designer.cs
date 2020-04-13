@@ -41,9 +41,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(92, 108);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(286, 42);
+            this.label1.Size = new System.Drawing.Size(301, 42);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Category name";
+            this.label1.Text = "Category name*";
             // 
             // label2
             // 
@@ -51,9 +51,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(92, 218);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(264, 42);
+            this.label2.Size = new System.Drawing.Size(279, 42);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Category type";
+            this.label2.Text = "Category type*";
             // 
             // saveButton
             // 
