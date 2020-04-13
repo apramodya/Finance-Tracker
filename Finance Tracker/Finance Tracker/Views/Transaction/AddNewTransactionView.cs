@@ -15,6 +15,7 @@ namespace Finance_Tracker.Views.Transaction
     public partial class AddNewTransactionView : Form
     {
         public Boolean isUpdating = false;
+        internal Models.Transaction updatingTransaction;
         Models.TransactionType selectedTransactionType = Models.TransactionType.Expense;
         public AddNewTransactionView()
         {
@@ -28,6 +29,14 @@ namespace Finance_Tracker.Views.Transaction
             LoadTransactionTypes();
             LoadContacts();
             LoadCategories();
+
+            if (isUpdating)
+            {
+                amountNumericUpDown.Value = (decimal)updatingTransaction.Amount;
+                categoriesComboBox.SelectedItem = updatingTransaction.Category.Type;
+                contactsComboBox.SelectedItem = updatingTransaction.Contact;
+                datePicker.Value = updatingTransaction.DateTime;
+            }
         }
         private void saveTransaction(object sender, EventArgs e)
         {

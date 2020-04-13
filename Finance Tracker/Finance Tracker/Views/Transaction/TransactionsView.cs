@@ -33,33 +33,110 @@ namespace Finance_Tracker.Views.Transaction
                 var transations = (from Transactions in db.Transactions
                                    select Transactions);
 
-                DataTable dt = new DataTable();
-                dt.Columns.Add("Date");
-                dt.Columns.Add("Amount");
-                dt.Columns.Add("Category");
-                dt.Columns.Add("Transaction Type");
-                dt.Columns.Add("Contact");
+                DataTable dataTable = new DataTable();
+                dataTable.Columns.Add("Id");
+                dataTable.Columns.Add("Date");
+                dataTable.Columns.Add("Amount");
+                dataTable.Columns.Add("Category");
+                dataTable.Columns.Add("Transaction Type");
+                dataTable.Columns.Add("Contact");
                 DataRow row = null;
 
-                foreach (var rowObj in transations)
+                foreach (var transation in transations)
                 {
-                    row = dt.NewRow();
+                    row = dataTable.NewRow();
                     String fullName = "-";
-                    if (rowObj.Contact != null)
+
+                    if (transation.Contact != null)
                     {
-                        fullName = rowObj.Contact.FirstName + " " + rowObj.Contact.LastName;
+                        fullName = transation.Contact.FirstName + " " + transation.Contact.LastName;
                     }
-                    
-                    dt.Rows.Add(
-                        rowObj.DateTime.ToShortDateString(), 
-                        rowObj.Amount, 
-                        rowObj.Category.Name,
-                        rowObj.TransactionType,
+
+                    dataTable.Rows.Add(
+                        transation.Id,
+                        transation.DateTime.ToShortDateString(),
+                        transation.Amount,
+                        transation.Category.Name,
+                        transation.TransactionType,
                         fullName);
                 }
 
-                dataGridView.DataSource = dt;
+                dataGridView.DataSource = dataTable;
+                dataGridView.Columns[0].Visible = false;
             }
         }
+
+        private void transactionClicked(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var id = int.Parse(dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+            AddNewTransactionView addNewTransactionView = new AddNewTransactionView();
+
+            using (DataBase.DBContainer db = new DataBase.DBContainer())
+            {
+                var transaction = (from Transactions in db.Transactions
+                                where id == Transactions.Id
+                                select Transactions).FirstOrDefault();
+
+                if (transaction != null)
+                {
+                    // contact
+                    Models.Contact _contact = new Models.Contact();
+                    if (transaction.Contact != null)
+                    {
+                        var selectedContact = (from Contacts in db.Contacts
+                                               where Contacts.Id == transaction.Contact.Id
+                                               select Contacts).FirstOrDefault();
+                        
+                        _contact.Id = selectedContact.Id;
+                        _contact.FirstName = selectedContact.FirstName;
+                        _contact.LastName = selectedContact.LastName;
+                        _contact.Description = selectedContact.Description;
+                    }
+
+                    // category
+                    var selectedCategory = (from Categories in db.Categories
+                                            where Categories.Id == transaction.Category.Id
+                                            select Categories).FirstOrDefault();
+                    Models.Category _category = new Models.Category();
+                    _category.Id = selectedCategory.Id;
+                    _category.Name = selectedCategory.Name;
+                    if (selectedCategory.TransactionType == "Expense")
+                    {
+                        _category.Type = Models.TransactionType.Expense;
+                    }
+                    else
+                    {
+                        _category.Type = Models.TransactionType.Income;
+                    }
+
+                    // transaction
+                    Models.Transaction _transaction = new Models.Transaction();
+                    _transaction.Id = id;
+                    _transaction.Amount = transaction.Amount;
+                    _transaction.DateTime = transaction.DateTime;
+                    _transaction.Category = _category;
+                    _transaction.Contact = _contact;
+
+                    if (transaction.TransactionType == "Expense")
+                    {
+                        _transaction.TransactionType = Models.TransactionType.Expense;
+                    }
+                    else
+                    {
+                        _transaction.TransactionType = Models.TransactionType.Income;
+                    }
+
+                    addNewTransactionView.isUpdating = true;
+                    addNewTransactionView.updatingTransaction = _transaction;
+                    addNewTransactionView.ShowDialog();
+                }
+            }
+
+            
+
+           
+        }
+
     }
 }

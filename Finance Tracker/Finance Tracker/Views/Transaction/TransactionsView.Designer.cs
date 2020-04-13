@@ -53,6 +53,7 @@
             this.dataGridView.RowTemplate.Height = 33;
             this.dataGridView.Size = new System.Drawing.Size(1095, 367);
             this.dataGridView.TabIndex = 1;
+            this.dataGridView.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.transactionClicked);
             // 
             // TransactionsView
             // 
