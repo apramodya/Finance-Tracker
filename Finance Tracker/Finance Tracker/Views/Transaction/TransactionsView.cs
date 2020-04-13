@@ -24,13 +24,18 @@ namespace Finance_Tracker.Views.Transaction
         }
         private void TransactionsView_Activated(object sender, EventArgs e)
         {
-            DisplayData();
+            DateTime date = monthCalendar.SelectionRange.Start;
+            var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
+            var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+
+            DisplayData(firstDayOfMonth, lastDayOfMonth);
         }
-        private void DisplayData()
+        private void DisplayData(DateTime firstDayOfMonth, DateTime lastDayOfMonth)
         {
             using (DataBase.DBContainer db = new DataBase.DBContainer())
             {
                 var transations = (from Transactions in db.Transactions
+                                   where (Transactions.DateTime <= lastDayOfMonth && Transactions.DateTime >= firstDayOfMonth)
                                    select Transactions);
 
                 DataTable dataTable = new DataTable();
@@ -137,8 +142,11 @@ namespace Finance_Tracker.Views.Transaction
 
         private void dateChanged(object sender, DateRangeEventArgs e)
         {
-            DateTime d = monthCalendar.SelectionRange.Start;
-            var month = d.Month.ToString();
+            DateTime date = monthCalendar.SelectionRange.Start;
+            var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
+            var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+
+            DisplayData(firstDayOfMonth, lastDayOfMonth);
         }
     }
 }
