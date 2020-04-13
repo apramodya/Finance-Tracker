@@ -31,12 +31,12 @@ namespace Finance_Tracker.Views.Transaction
         }
         private void saveTransaction(object sender, EventArgs e)
         {
-            var amount = amountTextBox.Text;
-            var category = categoriesComboBox.SelectedValue.ToString();
-            var contact = contactsComboBox.SelectedValue.ToString();
+            var amount = decimal.ToDouble(amountNumericUpDown.Value);
+            var categoryId = int.Parse(categoriesComboBox.SelectedValue.ToString());
+            var contactId = int.Parse(contactsComboBox.SelectedValue.ToString());
             var date = datePicker.Value;
 
-            if (amount == "" || amount == null)
+            if (amount == 0)
             {
                 MessageBox.Show(
                     "Please add an amount",
@@ -44,7 +44,7 @@ namespace Finance_Tracker.Views.Transaction
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return;
-            } else if (category == null || category == "0")
+            } else if (categoryId == 0)
             {
                 MessageBox.Show(
                     "Please select a category",
@@ -54,7 +54,36 @@ namespace Finance_Tracker.Views.Transaction
                 return;
             }
 
+            if (isUpdating)
+            {
 
+            } else
+            {
+                using (DataBase.DBContainer db = new DataBase.DBContainer())
+                {
+                    var selectedContact = (from Contacts in db.Contacts
+                                          where Contacts.Id == contactId
+                                          select Contacts).FirstOrDefault();
+
+                    var selectedCategory = (from Categories in db.Categories
+                                            where Categories.Id == categoryId
+                                            select Categories).FirstOrDefault();
+
+                    DataBase.Transaction transaction = new DataBase.Transaction
+                    {
+                        Amount = amount,
+                        Category = selectedCategory,
+                        DateTime = date,
+                        Contact = selectedContact,
+                        TransactionType = selectedTransactionType.ToString()
+                    };
+
+                    db.Transactions.Add(transaction);
+                    db.SaveChanges();
+                }
+
+                this.Close();
+            }
         }
         private void LoadTransactionTypes()
         {

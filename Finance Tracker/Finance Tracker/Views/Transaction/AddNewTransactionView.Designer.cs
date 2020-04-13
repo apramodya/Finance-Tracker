@@ -33,12 +33,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.amountTextBox = new System.Windows.Forms.TextBox();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.transactionTypeComboBox = new System.Windows.Forms.ComboBox();
             this.categoriesComboBox = new System.Windows.Forms.ComboBox();
             this.contactsComboBox = new System.Windows.Forms.ComboBox();
             this.saveButton = new System.Windows.Forms.Button();
+            this.amountNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.amountNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -91,14 +92,6 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Contact";
             // 
-            // amountTextBox
-            // 
-            this.amountTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.amountTextBox.Location = new System.Drawing.Point(501, 92);
-            this.amountTextBox.Name = "amountTextBox";
-            this.amountTextBox.Size = new System.Drawing.Size(389, 40);
-            this.amountTextBox.TabIndex = 5;
-            // 
             // datePicker
             // 
             this.datePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -146,17 +139,25 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveTransaction);
             // 
+            // amountNumericUpDown
+            // 
+            this.amountNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.amountNumericUpDown.Location = new System.Drawing.Point(501, 86);
+            this.amountNumericUpDown.Name = "amountNumericUpDown";
+            this.amountNumericUpDown.Size = new System.Drawing.Size(389, 40);
+            this.amountNumericUpDown.TabIndex = 11;
+            // 
             // AddNewTransactionView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 710);
+            this.Controls.Add(this.amountNumericUpDown);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.contactsComboBox);
             this.Controls.Add(this.categoriesComboBox);
             this.Controls.Add(this.transactionTypeComboBox);
             this.Controls.Add(this.datePicker);
-            this.Controls.Add(this.amountTextBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -168,6 +169,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add New Transaction";
             this.Load += new System.EventHandler(this.AddNewTransactionView_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.amountNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,11 +182,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox amountTextBox;
         private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.ComboBox transactionTypeComboBox;
         private System.Windows.Forms.ComboBox categoriesComboBox;
         private System.Windows.Forms.ComboBox contactsComboBox;
         private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.NumericUpDown amountNumericUpDown;
     }
 }
