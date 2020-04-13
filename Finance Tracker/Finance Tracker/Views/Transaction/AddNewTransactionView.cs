@@ -32,10 +32,27 @@ namespace Finance_Tracker.Views.Transaction
 
             if (isUpdating)
             {
+                var categeoryId = updatingTransaction.Category.Id;
+                var contactId = updatingTransaction.Contact.Id;
+                
                 amountNumericUpDown.Value = (decimal)updatingTransaction.Amount;
-                categoriesComboBox.SelectedItem = updatingTransaction.Category.Type;
-                contactsComboBox.SelectedItem = updatingTransaction.Contact;
+                
+                contactsComboBox.SelectedValue = contactId;
                 datePicker.Value = updatingTransaction.DateTime;
+
+                if (updatingTransaction.TransactionType == Models.TransactionType.Expense)
+                {
+                    selectedTransactionType = Models.TransactionType.Expense;
+                    LoadCategories();
+                    transactionTypeComboBox.SelectedItem = transactionTypeComboBox.Items[0];
+                } else
+                {
+                    selectedTransactionType = Models.TransactionType.Income;
+                    LoadCategories();
+                    transactionTypeComboBox.SelectedItem = transactionTypeComboBox.Items[1];
+                }
+
+                categoriesComboBox.SelectedValue = categeoryId;
             }
         }
         private void saveTransaction(object sender, EventArgs e)
