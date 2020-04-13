@@ -27,7 +27,9 @@ namespace Finance_Tracker.Views.Transaction
         }
         private void AddNewTransactionView_Load(object sender, EventArgs e)
         {
+            LoadTransactionTypes();
             LoadContacts();
+            LoadCategories();
         }
         private void saveTransaction(object sender, EventArgs e)
         {
@@ -36,29 +38,50 @@ namespace Finance_Tracker.Views.Transaction
             var contact = contactsComboBox.SelectedValue;
             var date = datePicker.Value;
         }
+        private void LoadTransactionTypes()
+        {
+            transactionTypeComboBox.Items.Add(Models.TransactionType.Expense);
+            transactionTypeComboBox.Items.Add(Models.TransactionType.Income);
+        }
         private void LoadContacts()
         {
             using (DataBase.DBContainer db = new DataBase.DBContainer())
             {
                 ArrayList ComboItems = new ArrayList();
+                ComboItems.Add(new ComboItem { Text = null, Value = 0 });
 
                 var contacts = from Contacts in db.Contacts
                                select Contacts;
 
                 foreach (var contact in contacts)
                 {
-                    Models.Contact contact1 = new Models.Contact();
-                    contact1.Id = contact.Id;
-                    contact1.FirstName = contact.FirstName;
-                    contact1.LastName = contact.LastName;
-                    contact1.Description = contact.Description;
-
-                    ComboItems.Add(new ComboItem { Text = contact.FirstName, Value = contact.Id });
+                    ComboItems.Add(new ComboItem { Text = contact.FirstName + " " + contact.LastName, Value = contact.Id });
                 }
 
                 contactsComboBox.DataSource = ComboItems;
                 contactsComboBox.DisplayMember = "Text";
                 contactsComboBox.ValueMember = "Value";
+            }
+        }
+
+        private void LoadCategories()
+        {
+            using (DataBase.DBContainer db = new DataBase.DBContainer())
+            {
+                ArrayList ComboItems = new ArrayList();
+                ComboItems.Add(new ComboItem { Text = null, Value = 0 });
+
+                var categories = from Categories in db.Categories
+                               select Categories;
+
+                foreach (var category in categories)
+                {
+                    ComboItems.Add(new ComboItem { Text = category.Name, Value = category.Id });
+                }
+
+                categoriesComboBox.DataSource = ComboItems;
+                categoriesComboBox.DisplayMember = "Text";
+                categoriesComboBox.ValueMember = "Value";
             }
         }
     }
