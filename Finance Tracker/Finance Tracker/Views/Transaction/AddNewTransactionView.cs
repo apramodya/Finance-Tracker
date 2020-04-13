@@ -36,7 +36,6 @@ namespace Finance_Tracker.Views.Transaction
                 var contactId = updatingTransaction.Contact.Id;
                 
                 amountNumericUpDown.Value = (decimal)updatingTransaction.Amount;
-                
                 contactsComboBox.SelectedValue = contactId;
                 datePicker.Value = updatingTransaction.DateTime;
 
@@ -82,7 +81,33 @@ namespace Finance_Tracker.Views.Transaction
 
             if (isUpdating)
             {
+                using (DataBase.DBContainer db = new DataBase.DBContainer())
+                {
+                    var transaction = (from Transactions in db.Transactions
+                                    where Transactions.Id == updatingTransaction.Id
+                                    select Transactions).FirstOrDefault();
 
+                    var selectedContact = (from Contacts in db.Contacts
+                                           where Contacts.Id == contactId
+                                           select Contacts).FirstOrDefault();
+
+                    var selectedCategory = (from Categories in db.Categories
+                                            where Categories.Id == categoryId
+                                            select Categories).FirstOrDefault();
+
+                    if (transaction != null)
+                    {
+                        transaction.Amount = amount;
+                        transaction.Category = selectedCategory;
+                        transaction.Contact = selectedContact;
+                        transaction.DateTime = date;
+                        transaction.TransactionType = selectedTransactionType.ToString();
+                    }
+
+                    db.SaveChanges();
+                }
+
+                this.Close();
             } else
             {
                 using (DataBase.DBContainer db = new DataBase.DBContainer())
