@@ -133,11 +133,12 @@ namespace Finance_Tracker.Views.Transaction
                     addNewTransactionView.ShowDialog();
                 }
             }
-
-            
-
-           
         }
 
+        private void dateChanged(object sender, DateRangeEventArgs e)
+        {
+            DateTime d = monthCalendar.SelectionRange.Start;
+            var month = d.Month.ToString();
+        }
     }
 }
