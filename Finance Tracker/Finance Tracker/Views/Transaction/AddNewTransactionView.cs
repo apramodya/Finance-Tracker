@@ -52,8 +52,52 @@ namespace Finance_Tracker.Views.Transaction
                 }
 
                 categoriesComboBox.SelectedValue = categeoryId;
+
+                // save button
+                saveButton.Location = new Point(
+                    contactsComboBox.Location.X - 130,
+                    contactsComboBox.Location.Y + 60);
+                // delete button
+                Button deleteButton = new Button();
+                deleteButton.Size = saveButton.Size;
+                deleteButton.Font = saveButton.Font;
+                deleteButton.Text = "Delete";
+                deleteButton.Location = new Point(
+                    contactsComboBox.Location.X + 10,
+                    contactsComboBox.Location.Y + 60);
+                this.Controls.Add(deleteButton);
+
+                deleteButton.Click += DeleteButton_Click;
             }
         }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show(
+                   "Are you sure you want to delete?",
+                   "Delete",
+                   MessageBoxButtons.YesNo,
+                   MessageBoxIcon.Warning);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                using (DataBase.DBContainer db = new DataBase.DBContainer())
+                {
+                    var transaction = (from Transactions in db.Transactions
+                                       where Transactions.Id == updatingTransaction.Id
+                                       select Transactions).FirstOrDefault();
+
+                    if (transaction != null)
+                    {
+                        db.Transactions.Remove(transaction);
+                        db.SaveChanges();
+                    }
+                }
+
+                this.Close();
+            }
+        }
+
         private void saveTransaction(object sender, EventArgs e)
         {
             var amount = decimal.ToDouble(amountNumericUpDown.Value);

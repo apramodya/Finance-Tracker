@@ -46,7 +46,7 @@ namespace Finance_Tracker.Category
 
                         addNewCategoryView.Category = _category;
                         addNewCategoryView.isUpdating = true;
-
+                        addNewCategoryView.Text = "Update category";
                         addNewCategoryView.ShowDialog();
                     }
                 }
@@ -77,7 +77,7 @@ namespace Finance_Tracker.Category
 
                         addNewCategoryView.Category = _category;
                         addNewCategoryView.isUpdating = true;
-
+                        addNewCategoryView.Text = "Update category";
                         addNewCategoryView.ShowDialog();
                     }
                 }

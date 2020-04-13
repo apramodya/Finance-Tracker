@@ -128,6 +128,7 @@ namespace Finance_Tracker.Views.Transaction
                     }
 
                     addNewTransactionView.isUpdating = true;
+                    addNewTransactionView.Text = "Update transaction";
                     addNewTransactionView.updatingTransaction = _transaction;
                     addNewTransactionView.ShowDialog();
                 }

@@ -47,7 +47,7 @@ namespace Finance_Tracker.Views.Contact
 
                         addNewContactView.Contact = _contact;
                         addNewContactView.isUpdating = true;
-
+                        addNewContactView.Text = "Update contact";
                         addNewContactView.ShowDialog();
                     }
                 }
