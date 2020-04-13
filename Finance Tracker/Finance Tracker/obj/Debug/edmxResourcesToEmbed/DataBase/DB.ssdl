@@ -38,11 +38,11 @@
     <Property Name="DateTime" Type="datetime" Nullable="false" />
     <Property Name="TransactionType" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Amount" Type="float" Nullable="false" />
-    <Property Name="Contact_Id" Type="int" Nullable="false" />
+    <Property Name="Contact_Id" Type="int" Nullable="true" />
     <Property Name="Category_Id" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="ContactTransaction">
-    <End Role="Contact" Type="DB.Store.Contacts" Multiplicity="1" />
+    <End Role="Contact" Type="DB.Store.Contacts" Multiplicity="0..1" />
     <End Role="Transaction" Type="DB.Store.Transactions" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Contact">

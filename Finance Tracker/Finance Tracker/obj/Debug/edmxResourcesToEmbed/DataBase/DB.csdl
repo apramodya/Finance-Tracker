@@ -44,7 +44,7 @@
     <NavigationProperty Name="Category" Relationship="DB.CategoryTransaction" FromRole="Transaction" ToRole="Category" />
   </EntityType>
   <Association Name="ContactTransaction">
-    <End Type="DB.Contact" Role="Contact" Multiplicity="1" />
+    <End Type="DB.Contact" Role="Contact" Multiplicity="0..1" />
     <End Type="DB.Transaction" Role="Transaction" Multiplicity="*" />
   </Association>
   <Association Name="CategoryTransaction">

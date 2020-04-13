@@ -37,6 +37,7 @@
       <EndProperty Name="Transaction">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
+      <Condition ColumnName="Contact_Id" IsNull="false" />
     </AssociationSetMapping>
     <AssociationSetMapping Name="CategoryTransaction" TypeName="DB.CategoryTransaction" StoreEntitySet="Transactions">
       <EndProperty Name="Category">

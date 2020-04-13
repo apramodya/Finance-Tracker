@@ -143,9 +143,15 @@
             // 
             this.amountNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.amountNumericUpDown.Location = new System.Drawing.Point(501, 86);
+            this.amountNumericUpDown.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.amountNumericUpDown.Name = "amountNumericUpDown";
             this.amountNumericUpDown.Size = new System.Drawing.Size(389, 40);
             this.amountNumericUpDown.TabIndex = 11;
+            this.amountNumericUpDown.ThousandsSeparator = true;
             // 
             // AddNewTransactionView
             // 

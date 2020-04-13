@@ -43,11 +43,11 @@
     <Property Name="DateTime" Type="datetime" Nullable="false" />
     <Property Name="TransactionType" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Amount" Type="float" Nullable="false" />
-    <Property Name="Contact_Id" Type="int" Nullable="false" />
+    <Property Name="Contact_Id" Type="int" Nullable="true" />
     <Property Name="Category_Id" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="ContactTransaction">
-    <End Role="Contact" Type="DB.Store.Contacts" Multiplicity="1" />
+    <End Role="Contact" Type="DB.Store.Contacts" Multiplicity="0..1" />
     <End Role="Transaction" Type="DB.Store.Transactions" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Contact">
@@ -118,7 +118,7 @@
           <NavigationProperty Name="Category" Relationship="DB.CategoryTransaction" FromRole="Transaction" ToRole="Category" />
         </EntityType>
         <Association Name="ContactTransaction">
-          <End Type="DB.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="DB.Contact" Role="Contact" Multiplicity="0..1" />
           <End Type="DB.Transaction" Role="Transaction" Multiplicity="*" />
         </Association>
         <Association Name="CategoryTransaction">
@@ -167,6 +167,7 @@
       <EndProperty Name="Transaction">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
+      <Condition ColumnName="Contact_Id" IsNull="false" />
     </AssociationSetMapping>
     <AssociationSetMapping Name="CategoryTransaction" TypeName="DB.CategoryTransaction" StoreEntitySet="Transactions">
       <EndProperty Name="Category">

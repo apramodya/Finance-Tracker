@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/12/2020 23:59:12
+-- Date Created: 04/13/2020 16:04:37
 -- Generated from EDMX file: C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\DataBase\DB.edmx
 -- --------------------------------------------------
 
@@ -65,7 +65,7 @@ CREATE TABLE [dbo].[Transactions] (
     [DateTime] datetime  NOT NULL,
     [TransactionType] nvarchar(max)  NOT NULL,
     [Amount] float  NOT NULL,
-    [Contact_Id] int  NOT NULL,
+    [Contact_Id] int  NULL,
     [Category_Id] int  NOT NULL
 );
 GO
