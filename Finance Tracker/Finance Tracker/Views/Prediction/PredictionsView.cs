@@ -49,11 +49,67 @@ namespace Finance_Tracker.Views.Prediction
         {
             using (DataBase.DBContainer db = new DataBase.DBContainer())
             {
-                var transactions = (from Transactions in db.Transactions
-                                    select Transactions.Amount);
+                var transactionsAmountArray = (from Transactions in db.Transactions
+                                               where Transactions.TransactionType == "Expense"
+                                               select Transactions.Amount);
 
-                if (transactions != null)
+                var firstTransactionDate = (from Transactions in db.Transactions
+                                            select Transactions)
+                                            .OrderBy(x => x.DateTime)
+                                            .FirstOrDefault().DateTime;
+                DateTime currentDate = DateTime.Now;
+
+                if (transactionsAmountArray != null && firstTransactionDate != null)
                 {
+                    if (selection == "Daily")
+                    {
+                        var totalDays = (currentDate - firstTransactionDate).TotalDays;
+                        var totalAmount = 0.0;
+                        foreach (var amount in transactionsAmountArray)
+                        {
+                            totalAmount += amount;
+                        }
+
+                        var averageAmount = totalAmount / totalDays;
+                        predictionTextBox.Text = averageAmount.ToString("0.00");
+                    }
+                    else if (selection == "Weekly")
+                    {
+                        var totalWeeks = (currentDate - firstTransactionDate).TotalDays / 7;
+                        var totalAmount = 0.0;
+                        foreach (var amount in transactionsAmountArray)
+                        {
+                            totalAmount += amount;
+                        }
+
+                        var averageAmount = totalAmount / totalWeeks;
+                        predictionTextBox.Text = averageAmount.ToString("0.00");
+                    }
+                    else if (selection == "Monthly")
+                    {
+                        var totalMonths = (currentDate - firstTransactionDate).TotalDays / 30;
+                        var totalAmount = 0.0;
+                        foreach (var amount in transactionsAmountArray)
+                        {
+                            totalAmount += amount;
+                        }
+
+                        var averageAmount = totalAmount / totalMonths;
+                        predictionTextBox.Text = averageAmount.ToString("0.00");
+                    }
+                    else if (selection == "Annually")
+                    {
+                        var totalYears = (currentDate - firstTransactionDate).TotalDays / 365;
+                        var totalAmount = 0.0;
+                        foreach (var amount in transactionsAmountArray)
+                        {
+                            totalAmount += amount;
+                        }
+
+                        var averageAmount = totalAmount / totalYears;
+                        predictionTextBox.Text = averageAmount.ToString("0.00");
+                    }
+
                 }
             }
         }
