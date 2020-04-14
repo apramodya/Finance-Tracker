@@ -148,5 +148,10 @@ namespace Finance_Tracker.Views.Transaction
 
             DisplayData(firstDayOfMonth, lastDayOfMonth);
         }
+
+        private void TransactionsView_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -71,7 +71,8 @@ namespace Finance_Tracker
         }
         private void predictionsDidPress(object sender, EventArgs e)
         {
-
+            Views.Prediction.PredictionsView predictionsView = new Views.Prediction.PredictionsView();
+            predictionsView.ShowDialog();
         }
         private void reportsDidPress(object sender, EventArgs e)
         {

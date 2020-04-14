@@ -77,6 +77,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Transactions";
             this.Activated += new System.EventHandler(this.TransactionsView_Activated);
+            this.Load += new System.EventHandler(this.TransactionsView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 
