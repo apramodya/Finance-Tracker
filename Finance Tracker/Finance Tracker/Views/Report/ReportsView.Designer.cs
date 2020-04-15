@@ -57,7 +57,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1081, 704);
+            this.ClientSize = new System.Drawing.Size(1081, 454);
             this.Controls.Add(this.criteriaComboBox);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;

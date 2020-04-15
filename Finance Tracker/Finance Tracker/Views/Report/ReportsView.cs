@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Finance_Tracker.Views.Report
 {
@@ -54,7 +55,7 @@ namespace Finance_Tracker.Views.Report
                 DateTime firstDate = new DateTime(yearsComboBoxSelection, monthsComboBoxSelection, datesComboBoxSelection);
                 DateTime lastDate = firstDate.AddDays(1).AddMinutes(-1);
                 
-                getReport(firstDate, lastDate);
+                getReport(firstDate, lastDate, selection);
             } 
             else if (selection == "Monthly")
             {
@@ -65,7 +66,7 @@ namespace Finance_Tracker.Views.Report
                 DateTime firstDate = new DateTime(yearsComboBoxSelection, monthsComboBoxSelection, 1);
                 DateTime lastDate = firstDate.AddMonths(1).AddDays(0).AddMinutes(-1);
 
-                getReport(firstDate, lastDate);
+                getReport(firstDate, lastDate, selection);
             } 
             else if (selection == "Annually")
             {
@@ -74,7 +75,7 @@ namespace Finance_Tracker.Views.Report
                 DateTime firstDate = new DateTime(yearsComboBoxSelection, 1, 1);
                 DateTime lastDate = firstDate.AddMonths(12).AddDays(0).AddMinutes(-1);
 
-                getReport(firstDate, lastDate);
+                getReport(firstDate, lastDate, selection);
             }
         }
         private void showGenerateButton()
@@ -138,21 +139,51 @@ namespace Finance_Tracker.Views.Report
             Controls.Remove(Controls.OfType<ComboBox>().Where(x => x.Name == "monthsComboBox").FirstOrDefault());
             Controls.Remove(Controls.OfType<ComboBox>().Where(x => x.Name == "yearsComboBox").FirstOrDefault());
         }
-        private void getReport(DateTime firstDate, DateTime lastDate)
+        private void getReport(DateTime firstDate, DateTime lastDate, String selection)
         {
-            using (DataBase.DBContainer db = new DataBase.DBContainer())
+            Task task = Task.Run(() =>
             {
-                var transactions = (from Transactions in db.Transactions
-                                    where Transactions.DateTime <= lastDate && Transactions.DateTime >= firstDate
-                                    select Transactions);
-
-                if (transactions != null)
+                using (DataBase.DBContainer db = new DataBase.DBContainer())
                 {
-                    foreach (var transaction in transactions)
+                    var transactions = (from Transactions in db.Transactions
+                                        where Transactions.DateTime <= lastDate && Transactions.DateTime >= firstDate
+                                        select Transactions);
+
+                    if (transactions != null)
                     {
-                        Console.WriteLine(transaction.Amount);
+                        string fileName = String.Format("{0} report.csv", selection);
+                        string csvFilePath = String.Format(
+                            "{0}\\{1}",
+                            Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                            fileName);
+                        var csv = new StringBuilder();
+
+                        var headerLine = string.Format("{0},{1},{2},{3}", "date", "amount", "contact", "category");
+                        csv.AppendLine(headerLine);
+
+                        foreach (var transaction in transactions)
+                        {
+                            var date = transaction.DateTime.ToShortDateString();
+                            var amount = transaction.Amount.ToString();
+                            var contact = (transaction.Contact != null) ? transaction.Contact.FirstName : "-";
+                            var category = transaction.Category.Name;
+
+                            var newLine = string.Format("{0},{1},{2},{3}", date, amount, contact, category);
+                            csv.AppendLine(newLine);
+                        }
+
+                        File.WriteAllText(csvFilePath, csv.ToString());
                     }
                 }
+            });
+
+            task.Wait();
+
+            if (task.Status == TaskStatus.RanToCompletion)
+            {
+                String message = String
+                    .Format("{0} {1}", "Report generated successfully in", Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+                MessageBox.Show(message);
             }
         }
     }
