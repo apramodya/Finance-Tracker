@@ -20,7 +20,7 @@ namespace Finance_Tracker.Views.Report
 
             criteriaComboBox.Items.Add("Daily");
             criteriaComboBox.Items.Add("Monthly");
-            criteriaComboBox.Items.Add("Annually");
+            criteriaComboBox.Items.Add("Annual");
         }
 
         private void criteriaSelected(object sender, EventArgs e)
@@ -33,9 +33,9 @@ namespace Finance_Tracker.Views.Report
             {
                 selection = "Monthly";
             }
-            else if (criteriaComboBox.SelectedItem.ToString() == "Annually")
+            else if (criteriaComboBox.SelectedItem.ToString() == "Annual")
             {
-                selection = "Annually";
+                selection = "Annual";
             }
 
             loadComboBoxes(selection);
@@ -68,7 +68,7 @@ namespace Finance_Tracker.Views.Report
 
                 getReport(firstDate, lastDate, selection);
             } 
-            else if (selection == "Annually")
+            else if (selection == "Annual")
             {
                 var yearsComboBoxSelection = int.Parse(Controls.OfType<ComboBox>()
                     .Where(x => x.Name == "yearsComboBox").FirstOrDefault().SelectedItem.ToString());
@@ -114,7 +114,7 @@ namespace Finance_Tracker.Views.Report
             datesComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             datesComboBox.Location = new Point(label1.Location.X + 340, label1.Location.Y + 50);
 
-            if (selection == "Annually")
+            if (selection == "Annual")
             {
                 clearComboBoxes(); 
                 Controls.Add(yearsComboBox);
@@ -181,9 +181,10 @@ namespace Finance_Tracker.Views.Report
 
             if (task.Status == TaskStatus.RanToCompletion)
             {
+                String caption = String.Format("{0} report", selection);
                 String message = String
                     .Format("{0} {1}", "Report generated successfully in", Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
-                MessageBox.Show(message);
+                MessageBox.Show(message, caption, MessageBoxButtons.OK);
             }
         }
     }
