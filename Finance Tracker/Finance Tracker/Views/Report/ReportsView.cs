@@ -42,21 +42,39 @@ namespace Finance_Tracker.Views.Report
         }
         private void GenerateButton_Click(object sender, EventArgs e)
         {
-            var datesComboBoxSelection = Controls.OfType<ComboBox>().Where(x => x.Name == "datesComboBox").FirstOrDefault().SelectedItem.ToString();
-            var monthsComboBoxSelection = Controls.OfType<ComboBox>().Where(x => x.Name == "monthsComboBox").FirstOrDefault().SelectedItem.ToString();
-            var yearsComboBoxSelection = Controls.OfType<ComboBox>().Where(x => x.Name == "yearsComboBox").FirstOrDefault().SelectedItem.ToString();
-
-            if (selection == "Annual")
+            if (selection == "Daily")
             {
+                var datesComboBoxSelection = int.Parse(Controls.OfType<ComboBox>()
+                .Where(x => x.Name == "datesComboBox").FirstOrDefault().SelectedItem.ToString());
+                var monthsComboBoxSelection = int.Parse(Controls.OfType<ComboBox>()
+                    .Where(x => x.Name == "monthsComboBox").FirstOrDefault().SelectedIndex.ToString()) + 1;
+                var yearsComboBoxSelection = int.Parse(Controls.OfType<ComboBox>()
+                    .Where(x => x.Name == "yearsComboBox").FirstOrDefault().SelectedItem.ToString());
 
+                DateTime firstDate = new DateTime(yearsComboBoxSelection, monthsComboBoxSelection, datesComboBoxSelection);
+                DateTime lastDate = firstDate.AddDays(1).AddMinutes(-1);
+                
+                getReport(firstDate, lastDate);
             } 
             else if (selection == "Monthly")
             {
+                var monthsComboBoxSelection = int.Parse(Controls.OfType<ComboBox>()
+                    .Where(x => x.Name == "monthsComboBox").FirstOrDefault().SelectedIndex.ToString()) + 1;
+                var yearsComboBoxSelection = int.Parse(Controls.OfType<ComboBox>()
+                    .Where(x => x.Name == "yearsComboBox").FirstOrDefault().SelectedItem.ToString());
+                DateTime firstDate = new DateTime(yearsComboBoxSelection, monthsComboBoxSelection, 1);
+                DateTime lastDate = firstDate.AddMonths(1).AddDays(0).AddMinutes(-1);
 
+                getReport(firstDate, lastDate);
             } 
-            else if (selection == "Daily")
+            else if (selection == "Annually")
             {
+                var yearsComboBoxSelection = int.Parse(Controls.OfType<ComboBox>()
+                    .Where(x => x.Name == "yearsComboBox").FirstOrDefault().SelectedItem.ToString());
+                DateTime firstDate = new DateTime(yearsComboBoxSelection, 1, 1);
+                DateTime lastDate = firstDate.AddMonths(12).AddDays(0).AddMinutes(-1);
 
+                getReport(firstDate, lastDate);
             }
         }
         private void showGenerateButton()
@@ -120,13 +138,21 @@ namespace Finance_Tracker.Views.Report
             Controls.Remove(Controls.OfType<ComboBox>().Where(x => x.Name == "monthsComboBox").FirstOrDefault());
             Controls.Remove(Controls.OfType<ComboBox>().Where(x => x.Name == "yearsComboBox").FirstOrDefault());
         }
-        private void getReport()
+        private void getReport(DateTime firstDate, DateTime lastDate)
         {
             using (DataBase.DBContainer db = new DataBase.DBContainer())
             {
                 var transactions = (from Transactions in db.Transactions
-                                               select Transactions);
+                                    where Transactions.DateTime <= lastDate && Transactions.DateTime >= firstDate
+                                    select Transactions);
 
+                if (transactions != null)
+                {
+                    foreach (var transaction in transactions)
+                    {
+                        Console.WriteLine(transaction.Amount);
+                    }
+                }
             }
         }
     }
