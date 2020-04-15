@@ -126,6 +126,12 @@
     <Compile Include="Views\Prediction\PredictionsView.Designer.cs">
       <DependentUpon>PredictionsView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Report\ReportsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Report\ReportsView.Designer.cs">
+      <DependentUpon>ReportsView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Transaction\AddNewTransactionView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     <EmbeddedResource Include="Views\Prediction\PredictionsView.resx">
       <DependentUpon>PredictionsView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Report\ReportsView.resx">
+      <DependentUpon>ReportsView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Transaction\AddNewTransactionView.resx">
       <DependentUpon>AddNewTransactionView.cs</DependentUpon>
     </EmbeddedResource>
@@ -203,9 +212,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Report\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="DataBase\DB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

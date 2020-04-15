@@ -20,3 +20,4 @@ C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance
 C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Debug\Finance_Tracker.Views.Transaction.AddNewTransactionView.resources
 C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Debug\Finance Tracker.csprojAssemblyReference.cache
 C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Debug\Finance_Tracker.Views.Prediction.PredictionsView.resources
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Debug\Finance_Tracker.Views.Report.ReportsView.resources

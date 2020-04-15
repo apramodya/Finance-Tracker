@@ -76,7 +76,8 @@ namespace Finance_Tracker
         }
         private void reportsDidPress(object sender, EventArgs e)
         {
-
+            Views.Report.ReportsView reportsView = new Views.Report.ReportsView();
+            reportsView.ShowDialog();
         }
     }
 }
