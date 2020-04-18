@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/13/2020 16:04:37
+-- Date Created: 04/19/2020 05:12:55
 -- Generated from EDMX file: C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\DataBase\DB.edmx
 -- --------------------------------------------------
 
@@ -102,7 +102,7 @@ ADD CONSTRAINT [FK_ContactTransaction]
     FOREIGN KEY ([Contact_Id])
     REFERENCES [dbo].[Contacts]
         ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ContactTransaction'
@@ -117,7 +117,7 @@ ADD CONSTRAINT [FK_CategoryTransaction]
     FOREIGN KEY ([Category_Id])
     REFERENCES [dbo].[Categories]
         ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_CategoryTransaction'
