@@ -73,6 +73,14 @@ namespace Finance_Tracker.Category
                     }
 
                     categoryNameTextBox.Text = name;
+
+                    if (type == "Expense")
+                    {
+                        categoryTypeComboBox.SelectedItem = Models.TransactionType.Expense;
+                    } else if (type == "Income")
+                    {
+                        categoryTypeComboBox.SelectedItem = Models.TransactionType.Income;
+                    }
                 } catch { }
             }
         }

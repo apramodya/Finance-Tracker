@@ -96,18 +96,6 @@ namespace Finance_Tracker.Views.Contact
             var lastName = lastNameTextBox.Text;
             var description = descriptionTextBox.Text;
 
-            // data set
-            this.dbData.Contacts.AddContactsRow(firstName, lastName, description);
-            this.dbData.AcceptChanges();
-            
-            // xml
-            String filePath = String.Format(
-                "{0}\\{1}",
-                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                "DSContacts.txt"
-                );
-            this.dbData.WriteXml(filePath);
-
             // database
             if (isUpdating)
             {
