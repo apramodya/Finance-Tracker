@@ -107,6 +107,11 @@
     <Compile Include="DataBase\Transaction.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\DSCategory.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSCategory.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\DSContacts.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -214,6 +219,17 @@
     </EntityDeploy>
     <None Include="DataBase\DB.edmx.diagram">
       <DependentUpon>DB.edmx</DependentUpon>
+    </None>
+    <None Include="DataSets\DSCategory.xsc">
+      <DependentUpon>DSCategory.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\DSCategory.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSCategory.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\DSCategory.xss">
+      <DependentUpon>DSCategory.xsd</DependentUpon>
     </None>
     <None Include="DataSets\DSContacts.xsc">
       <DependentUpon>DSContacts.xsd</DependentUpon>

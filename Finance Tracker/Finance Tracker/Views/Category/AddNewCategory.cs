@@ -14,7 +14,7 @@ namespace Finance_Tracker.Category
     {
         public Boolean isUpdating = false;
         internal Models.Category Category;
-        private DataSets.DSContacts dbData = new DataSets.DSContacts();
+        private DataSets.DSCategory dbData = new DataSets.DSCategory();
         private Boolean didSaveButtonPress = false;
         public AddNewCategoryView()
         {
@@ -45,6 +45,35 @@ namespace Finance_Tracker.Category
                 this.Controls.Add(deleteButton);
 
                 deleteButton.Click += DeleteButton_Click;
+            }
+            else
+            {
+                // xml
+                String filePath = String.Format(
+                    "{0}\\{1}",
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                    "DSCategories.txt"
+                    );
+                try
+                {
+                    dbData.ReadXml(filePath, XmlReadMode.InferSchema);
+
+                    var name = "";
+                    var type = "";
+
+                    foreach (DataTable table in dbData.Tables)
+                    {
+                        Console.WriteLine(table.TableName);
+
+                        foreach (var row in table.AsEnumerable())
+                        {
+                            name = row[0].ToString();
+                            type = row[1].ToString();
+                        }
+                    }
+
+                    categoryNameTextBox.Text = name;
+                } catch { }
             }
         }
 
@@ -134,6 +163,19 @@ namespace Finance_Tracker.Category
                 }
 
                 didSaveButtonPress = true;
+
+                // data set
+                this.dbData.Category.Rows.RemoveAt(0);
+                this.dbData.AcceptChanges();
+
+                // xml
+                String filePath = String.Format(
+                "{0}\\{1}",
+                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                "DSCategories.txt"
+                );
+                this.dbData.WriteXml(filePath);
+
                 this.Close();
             }
         }
@@ -150,8 +192,8 @@ namespace Finance_Tracker.Category
                     categoryType = categoryTypeComboBox.SelectedItem.ToString();
                 }
 
-
                 // data set
+                this.dbData.Category.Clear();
                 this.dbData.Category.AddCategoryRow(categoryName, categoryType);
                 this.dbData.AcceptChanges();
 
