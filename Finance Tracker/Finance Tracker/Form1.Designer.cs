@@ -40,6 +40,7 @@
             this.incomeTextBox = new System.Windows.Forms.TextBox();
             this.expenseTextBox = new System.Windows.Forms.TextBox();
             this.balanceTextBox = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // categoriesBtn
@@ -178,11 +179,23 @@
             this.balanceTextBox.Text = "0.00";
             this.balanceTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.button1.Location = new System.Drawing.Point(101, 496);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(440, 80);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Add Transaction";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.addTransaction);
+            // 
             // homeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1144, 712);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.balanceTextBox);
             this.Controls.Add(this.expenseTextBox);
             this.Controls.Add(this.incomeTextBox);
@@ -221,6 +234,7 @@
         private System.Windows.Forms.TextBox incomeTextBox;
         private System.Windows.Forms.TextBox expenseTextBox;
         private System.Windows.Forms.TextBox balanceTextBox;
+        private System.Windows.Forms.Button button1;
     }
 }
 

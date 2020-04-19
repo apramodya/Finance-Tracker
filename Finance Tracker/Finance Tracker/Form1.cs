@@ -79,5 +79,11 @@ namespace Finance_Tracker
             Views.Report.ReportsView reportsView = new Views.Report.ReportsView();
             reportsView.ShowDialog();
         }
+
+        private void addTransaction(object sender, EventArgs e)
+        {
+            Views.Transaction.AddNewTransactionView addNewTransactionView = new Views.Transaction.AddNewTransactionView();
+            addNewTransactionView.ShowDialog();
+        }
     }
 }
