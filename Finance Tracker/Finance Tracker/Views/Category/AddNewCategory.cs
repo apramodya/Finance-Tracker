@@ -15,6 +15,7 @@ namespace Finance_Tracker.Category
         public Boolean isUpdating = false;
         internal Models.Category Category;
         private DataSets.DSContacts dbData = new DataSets.DSContacts();
+        private Boolean didSaveButtonPress = false;
         public AddNewCategoryView()
         {
             InitializeComponent();
@@ -70,6 +71,7 @@ namespace Finance_Tracker.Category
                     }
                 }
 
+                didSaveButtonPress = true;
                 this.Close();
             }
         }
@@ -97,18 +99,6 @@ namespace Finance_Tracker.Category
             var categoryName = categoryNameTextBox.Text;
             var categoryType = categoryTypeComboBox.SelectedItem.ToString();
 
-            // data set
-            this.dbData.Category.AddCategoryRow(categoryName, categoryType);
-            this.dbData.AcceptChanges();
-
-            // xml
-            String filePath = String.Format(
-                "{0}\\{1}",
-                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                "DSCategories.txt"
-                );
-            this.dbData.WriteXml(filePath);
-
             // database
             if (isUpdating)
             {
@@ -127,6 +117,7 @@ namespace Finance_Tracker.Category
                     db.SaveChanges();
                 }
 
+                didSaveButtonPress = true;
                 this.Close();
             } else
             {
@@ -142,7 +133,35 @@ namespace Finance_Tracker.Category
                     db.SaveChanges();
                 }
 
+                didSaveButtonPress = true;
                 this.Close();
+            }
+        }
+
+        private void formClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!didSaveButtonPress)
+            {
+                var categoryName = categoryNameTextBox.Text;
+                var categoryType = "";
+
+                if (categoryTypeComboBox.SelectedItem != null)
+                {
+                    categoryType = categoryTypeComboBox.SelectedItem.ToString();
+                }
+
+
+                // data set
+                this.dbData.Category.AddCategoryRow(categoryName, categoryType);
+                this.dbData.AcceptChanges();
+
+                // xml
+                String filePath = String.Format(
+                    "{0}\\{1}",
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                    "DSCategories.txt"
+                    );
+                this.dbData.WriteXml(filePath);
             }
         }
     }

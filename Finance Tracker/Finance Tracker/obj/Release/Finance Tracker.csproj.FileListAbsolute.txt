@@ -1,0 +1,27 @@
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\bin\Release\Finance Tracker.exe.config
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\bin\Release\Finance Tracker.exe
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\bin\Release\Finance Tracker.pdb
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\bin\Release\EntityFramework.dll
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\bin\Release\EntityFramework.xml
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Release\Finance Tracker.csprojAssemblyReference.cache
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Release\Finance_Tracker.Category.AddNewCategoryView.resources
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Release\Finance_Tracker.Category.CategoriesView.resources
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Release\Finance_Tracker.homeView.resources
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Release\Finance_Tracker.Properties.Resources.resources
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Release\Finance_Tracker.Views.Contact.AddNewContactView.resources
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Release\Finance_Tracker.Views.Contact.ContactsView.resources
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Release\Finance_Tracker.Views.Prediction.PredictionsView.resources
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Release\Finance_Tracker.Views.Report.ReportsView.resources
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Release\Finance_Tracker.Views.Transaction.AddNewTransactionView.resources
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Release\Finance_Tracker.Views.Transaction.TransactionsView.resources
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Release\Finance Tracker.csproj.GenerateResource.cache
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Release\Finance Tracker.csproj.CoreCompileInputs.cache
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Release\Finance Tracker.csproj.CopyComplete
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Release\Finance Tracker.exe
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Release\Finance Tracker.pdb
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\bin\Release\Finance Tracker.exe.manifest
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\bin\Release\Finance Tracker.application
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Release\Finance Tracker.exe.manifest
+C:\Users\Pramodya\source\repos\apramodya\Finance-Tracker\Finance Tracker\Finance Tracker\obj\Release\Finance Tracker.application

@@ -187,5 +187,10 @@ namespace Finance_Tracker.Views.Report
                 MessageBox.Show(message, caption, MessageBoxButtons.OK);
             }
         }
+
+        private void ReportsView_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -65,6 +65,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Reports";
+            this.Load += new System.EventHandler(this.ReportsView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
